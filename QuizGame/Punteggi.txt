@@ -1,2 +1,1 @@
-prova;20
-io;40
+Gwave;30
