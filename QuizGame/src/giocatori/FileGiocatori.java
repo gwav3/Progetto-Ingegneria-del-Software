@@ -10,6 +10,7 @@ import java.io.BufferedReader;
 
 
 public class FileGiocatori {
+    //prova commit
 
     public ArrayList<Giocatore> elencoGiocatori = new ArrayList<>();
     File file = new File("Punteggi.txt");
