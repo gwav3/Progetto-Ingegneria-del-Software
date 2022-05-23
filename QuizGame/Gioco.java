@@ -1,5 +1,3 @@
-
-//import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -9,6 +7,7 @@ import src.giocatori.*;
 public class Gioco {
     
     ElencoDomande elencoDomande;
+    FileGiocatori fileGiocatori;
     int punteggio = 0;
     Giocatore giocatore;
     Scanner scan = new Scanner(System.in);
@@ -19,6 +18,7 @@ public class Gioco {
             giocatore = creaGiocatore();
             selezioneDifficolta();
             salvaPunteggio();
+            mostraClassifica();
     }
 
     private Giocatore creaGiocatore(){
@@ -32,12 +32,12 @@ public class Gioco {
     private void salvaPunteggio() throws IOException, InterruptedException{
         System.out.println("\n\nCongrautulazioni ** "+ this.giocatore.getUsername() +" ** Hai ottenuto un punteggio di " + this.punteggio + "\n\n"); 
         this.giocatore.setNewMax(this.punteggio);
-        FileGiocatori fileGiocatori = new FileGiocatori();
+        this.fileGiocatori = new FileGiocatori();
         fileGiocatori.salvaGiocatore(this.giocatore);
     }
   
     private void selezioneDifficolta() throws IOException, InterruptedException{
-        System.out.println("\n\n**********************************\nInserire un livello di Difficolta fra:\n\n- FACILE\n\n- MEDIO\n\n- DIFFICILE \n");
+        System.out.println("\n\n**************************************\nInserire un livello di Difficolta fra:\n\n- FACILE\n\n- MEDIO\n\n- DIFFICILE \n");
             String linea = scan.nextLine();
             if(linea.equalsIgnoreCase("FACILE") || linea.equalsIgnoreCase("MEDIO") || linea.equalsIgnoreCase("DIFFICLE")){
                 this.elencoDomande = new ElencoDomande(linea);
@@ -85,5 +85,10 @@ public class Gioco {
         this.elencoDomande.domanda.get(i).printDomanda();
     }
 
+    private void mostraClassifica() throws IOException{
+        System.out.println("\n***ECCO TUTTI I PUNTEGGI***\n");
+        this.fileGiocatori.printPunteggi();
+        System.out.println("\n***************************");
+    }
 }
 

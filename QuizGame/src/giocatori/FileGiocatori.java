@@ -10,7 +10,6 @@ import java.io.BufferedReader;
 
 
 public class FileGiocatori {
-    //prova commit
 
     public ArrayList<Giocatore> elencoGiocatori = new ArrayList<>();
     File file = new File("Punteggi.txt");
@@ -21,8 +20,7 @@ public class FileGiocatori {
     }
 
 
-
-    public void inserisciUsernameRecord() throws IOException{
+    private void inserisciUsernameRecord() throws IOException{
         String[] user0_record1;
         int record_temp;
         String linea;
@@ -42,7 +40,7 @@ public class FileGiocatori {
     public void printPunteggi(){
         int i = 0;
         for(Giocatore s : elencoGiocatori){
-            System.out.println(s.getUsername() + " Record -> " + s.getPunteggioMax());
+            System.out.println("- " + s.getUsername() + " Record -> " + s.getPunteggioMax() + "\n");
             i = i + 1;
         }
     }
@@ -63,7 +61,7 @@ public class FileGiocatori {
         
     }
     
-    public boolean giocatorePresente(Giocatore giocatore){
+    private boolean giocatorePresente(Giocatore giocatore){
         long controllo = elencoGiocatori.parallelStream()
                             .filter(g -> g.getUsername().equals(giocatore.getUsername()))
                             .count();
@@ -85,7 +83,7 @@ public class FileGiocatori {
         else {inserisciGiocatore(giocatore);}
     }
 
-    public Giocatore ritornaPlayer(Giocatore giocatore){
+    private Giocatore ritornaPlayer(Giocatore giocatore){
         if(giocatorePresente(giocatore)){
             for(Giocatore g : elencoGiocatori){
                 if(g.getUsername().equals(giocatore.getUsername())){
@@ -96,7 +94,7 @@ public class FileGiocatori {
         return null;
     }
 
-    public void aggiornaPunteggio(Giocatore giocatore){
+    private void aggiornaPunteggio(Giocatore giocatore){
         if(giocatorePresente(giocatore)){
             for(Giocatore g : elencoGiocatori){
                 if(g.getUsername().equals(giocatore.getUsername())){

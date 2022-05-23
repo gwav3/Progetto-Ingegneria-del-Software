@@ -1,1 +1,6 @@
 Gwave;30
+Alessandro;30
+Daniela;0
+Luigi;10
+Alice;50
+giuseppe;30
